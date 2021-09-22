@@ -308,6 +308,8 @@ static const char *modifier_to_string(uint64_t modifier)
 		return "MOD_BROADCOM_VC4_T_TILED";
 	case DRM_FORMAT_MOD_QCOM_COMPRESSED:
 		return "QCOM_COMPRESSED";
+  case DRM_FORMAT_MOD_CHROMEOS_ROCKCHIP_AFBC:
+		return "MOD_CHROMEOS_ROCKCHIP_AFBC";
 	default:
 		return "(UNKNOWN MODIFIER)";
 	}

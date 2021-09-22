@@ -331,10 +331,11 @@ install_headers(
   'include/drm/mach64_drm.h', 'include/drm/mga_drm.h',
   'include/drm/msm_drm.h', 'include/drm/nouveau_drm.h',
   'include/drm/qxl_drm.h', 'include/drm/r128_drm.h',
-  'include/drm/radeon_drm.h', 'include/drm/amdgpu_drm.h',
+  'include/drm/radeon_drm.h', 'include/drm/rockchip_drm.h', 'include/drm/amdgpu_drm.h',
   'include/drm/savage_drm.h', 'include/drm/sis_drm.h',
   'include/drm/tegra_drm.h', 'include/drm/vc4_drm.h',
   'include/drm/via_drm.h', 'include/drm/virtgpu_drm.h',
+  'include/drm/evdi_drm.h',
   subdir : 'libdrm',
 )
 if with_vmwgfx

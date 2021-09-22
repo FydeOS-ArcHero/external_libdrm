@@ -362,9 +362,15 @@ extern "C" {
 #define DRM_FORMAT_MOD_VENDOR_ALLWINNER 0x09
 #define DRM_FORMAT_MOD_VENDOR_AMLOGIC 0x0a
 
+/* For backwards compatibility prior to 2.4.92. */
+#define DRM_FORMAT_MOD_VENDOR_NV      DRM_FORMAT_MOD_VENDOR_NVIDIA
+
 /* add more to the end as needed */
 
 #define DRM_FORMAT_RESERVED	      ((1ULL << 56) - 1)
+
+/* Vendor ID for downstream, interim ChromeOS specific modifiers. */
+#define DRM_FORMAT_MOD_VENDOR_CHROMEOS 0xf0
 
 #define fourcc_mod_code(vendor, val) \
 	((((__u64)DRM_FORMAT_MOD_VENDOR_## vendor) << 56) | ((val) & 0x00ffffffffffffffULL))
@@ -1014,6 +1020,20 @@ drm_fourcc_canonicalize_nvidia_format_mod(__u64 modifier)
  * both in row-major order.
  */
 #define DRM_FORMAT_MOD_ALLWINNER_TILED fourcc_mod_code(ALLWINNER, 1)
+
+/*
+ * Rockchip ARM Framebuffer Compression (AFBC)
+ *
+ * This modifier identifies the specific variant of AFBC supported by the
+ * Rockchip display hardware. It's technically a two-plane format: first a
+ * header with 16 bytes per block, followed by the block data aligned to 1024
+ * bytes. Each block is 16x16 pixels.
+ *
+ * Eventually ARM should define modifiers for the various AFBC types, but
+ * we'll use this in the meantime. We use the CHROMEOS vendor ID to make sure
+ * we don't clash with future vendor modifiers.
+ */
+#define DRM_FORMAT_MOD_CHROMEOS_ROCKCHIP_AFBC	fourcc_mod_code(CHROMEOS, 1)
 
 /*
  * Amlogic Video Framebuffer Compression modifiers
